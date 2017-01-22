@@ -15,12 +15,16 @@ def get_fixture():
 
 def show_week(week):
     week_games = fixture_weeks[week-1].findall('tr')[1].text_content().split('\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t')
+    print("Spor Toto Süper Lig %d. Hafta Maçları\n" % week)
     for game in week_games:
-        print(re.sub(r'[\r\n\t]+',' ', game))
+        str = re.sub(r'[\r\n\t]+',' ', game)
+        str = str.lstrip(' ')
+        print(str)
 
 @click.command()
 @click.option('--hafta', default=18, help="İstediğiniz haftanın maçlarını gösterir.")
 def main(hafta):
+    """Spor Toto Süper Lig hakkında bilgiler alabileceğiniz, komut satırı üzerinden çalışan program."""
     get_fixture()
     show_week(hafta)
 
