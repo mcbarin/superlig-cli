@@ -8,4 +8,4 @@ Terminal client that gives info about Turkish Football League.
     Click
     lxml
     requests
-
+    terminaltables
