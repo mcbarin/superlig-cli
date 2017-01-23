@@ -11,7 +11,8 @@ setup(
     install_requires=[
     'lxml',
     'click',
-    'requests'],
+    'requests',
+    'terminaltables'],
     entry_points='''
         [console_scripts]
         superlig=superlig:main
