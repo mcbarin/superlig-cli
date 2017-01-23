@@ -9,3 +9,8 @@ Terminal client that gives info about Turkish Football League.
     lxml
     requests
     terminaltables
+
+## ScreenShot
+
+![Alt ss](/images/ss.png" "ss")
+
