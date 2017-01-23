@@ -12,5 +12,5 @@ Terminal client that gives info about Turkish Football League.
 
 ## ScreenShot
 
-![Alt ss](/images/ss.png" "ss")
+![Alt ss](/images/ss.png "ss")
 
