@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import requests
 import click
 from lxml import html
@@ -24,7 +25,7 @@ def get_table():
     page = requests.get(league_table_url)
     tree = html.fromstring(page.content)
     table = tree.xpath('//ul[@class="pdlist"]/li')
-    print()
+    print("")
     click.secho("PUAN DURUMU", fg='red', bg='yellow', bold=True, blink=True)
     table_data = []
     for row in table:

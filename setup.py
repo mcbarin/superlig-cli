@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='superlig',
-    version='0.2',
+    version='0.3',
     py_modules=['superlig'],
     author="Mehmet Çağatay Barın",
     author_email="mcagataybarin@gmail.com",
