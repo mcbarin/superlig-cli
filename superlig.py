@@ -3,19 +3,25 @@ import click
 from lxml import html
 from terminaltables import AsciiTable
 import re
+from bs4 import BeautifulSoup
+
+current_week_selector = "#ctl00_MPane_m_198_935_ctnr_m_198_935_hs_Tab2 > span > span"
+fixture_url = "http://www.tff.org/default.aspx?pageID=198"
+league_table_url = "http://www.sporx.com/futbol-super-lig"
 
 def get_fixture():
-    page = requests.get("http://www.tff.org/default.aspx?pageID=198")
+    page = requests.get(fixture_url)
     global tree
     tree = html.fromstring(page.content)
     global fixture_weeks
-    fixture_weeks = tree.xpath('//table[@class="softBG"]')
+    soup = BeautifulSoup(page.text.replace(",", "."), "lxml")
+    fixture_weeks = soup.findAll("table", {"class": "softBG"})
     global current_week
-    current_week = tree.get_element_by_id('ctl00_MPane_m_198_935_ctnr_m_198_935_hs_Tab2').findall('span')[0].text_content().split('.')[0]
+    current_week = soup.select_one(current_week_selector).text.split('.')[0]
     current_week = int(current_week)
 
 def get_table():
-    page = requests.get("http://www.sporx.com/futbol-super-lig")
+    page = requests.get(league_table_url)
     tree = html.fromstring(page.content)
     table = tree.xpath('//ul[@class="pdlist"]/li')
     print()
@@ -46,11 +52,11 @@ def show_week(week):
         table = AsciiTable(detailed_data)
         print(table.table)
     else:   
-        week_games = fixture_weeks[week-1].findall('tr')[1].text_content().split('\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t')
+        week_games = fixture_weeks[week-1]
+        week_games = week_games.findAll('tr')[2:]
         for game in week_games:
-            str = re.sub(r'[\r\n\t]+',' ', game)
-            str = str.lstrip(' ')
-            print(str)
+            game_text = game.text.replace("\n"," ")[1:]
+            print(game_text)
 
 get_fixture()
 @click.command()

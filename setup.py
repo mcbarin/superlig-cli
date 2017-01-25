@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='superlig',
-    version='0.1',
+    version='0.2',
     py_modules=['superlig'],
     author="Mehmet Çağatay Barın",
     author_email="mcagataybarin@gmail.com",
@@ -12,7 +12,8 @@ setup(
     'lxml',
     'click',
     'requests',
-    'terminaltables'],
+    'terminaltables',
+    'bs4'],
     entry_points='''
         [console_scripts]
         superlig=superlig:main
