@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='superlig',
-    version='0.3',
+    version='0.4',
     py_modules=['superlig'],
     author="Mehmet Çağatay Barın",
     author_email="mcagataybarin@gmail.com",
@@ -13,7 +13,7 @@ setup(
     'click',
     'requests',
     'terminaltables',
-    'bs4'],
+    'beautifulsoup4'],
     entry_points='''
         [console_scripts]
         superlig=superlig:main
