@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "superlig"
+version = "1.1.0"
+description = "Terminal client that gives info about Turkish Football League (Süper Lig)"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "Mehmet Çağatay Barın", email = "mcagataybarin@gmail.com" }
+]
+license = { text = "MIT" }
+keywords = ["football", "soccer", "turkish", "super-lig", "cli"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Utilities",
+]
+
+dependencies = [
+    "click>=8.0",
+    "requests>=2.31.0",
+    "rich>=13.0.0",
+    "beautifulsoup4>=4.12.0",
+    "lxml>=4.9.0",
+]
+
+[project.scripts]
+superlig = "superlig:main"
+
+[project.urls]
+Homepage = "https://github.com/mcbarin/superlig-cli"
+Repository = "https://github.com/mcbarin/superlig-cli"
+
+[tool.setuptools]
+# For single module packages, py-modules should be specified
+# But setup.py handles this explicitly for better compatibility
